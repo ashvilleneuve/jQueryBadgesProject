@@ -17,6 +17,17 @@
 
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
   <script src="assets/main.js"></script>
-
+  <script>
+  $.ajax({
+     url: 'https://www.codeschool.com/users/ashvill.json',
+     dataType: 'jsonp',
+     success: function(response) {
+       $(response.courses.completed).each(function(i, obj){
+         var obj = response.courses.completed;
+        $('#badges').append('<a href="' + obj[i].url + '" class="btn btn-primary" target="_blank"><div class="course"><h3>' + obj[i].title + '</h3><img src="' + obj[i].badge + '"></div></a>')
+      });
+     }
+   });
+   </script>
 </body>
 </html>
